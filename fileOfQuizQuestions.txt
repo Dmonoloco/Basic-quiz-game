@@ -1,0 +1,70 @@
+QUESTION: What do you call a group of flamingos? 
+ANSWER: A flamboyance
+QUESTION: What sport was featured on the first curved U.S. coin in 2014?
+ANSWER: Baseball
+QUESTION: What country uses approximately four billion miles of toilet paper each year?
+ANSWER: China
+QUESTION: Cyberphobia is the fear of what?
+ANSWER: Computers
+QUESTION: What is known as the "Droste Effect"?
+ANSWER: The effect of an image appearing within itself
+QUESTION: What is the capital of France?
+ANSWER: Paris
+QUESTION: Who wrote the play "Romeo and Juliet"?
+ANSWER: William Shakespeare
+QUESTION: What is the largest planet in our solar system?
+ANSWER: Jupiter
+QUESTION: In which year did the Titanic sink?
+ANSWER: 1912
+QUESTION: What is the chemical symbol for gold?
+ANSWER: Au
+QUESTION: Who painted the Mona Lisa?
+ANSWER: Leonardo da Vinci
+QUESTION: What is the smallest country in the world?
+ANSWER: Vatican City
+QUESTION: Who is known as the "Father of Computers"?
+ANSWER: Charles Babbage
+QUESTION: What is the main ingredient in traditional Japanese miso soup?
+ANSWER: Miso paste
+QUESTION: What is the hardest natural substance on Earth?
+ANSWER: Diamond
+QUESTION: How many continents are there on Earth?
+ANSWER: Seven
+QUESTION: What is the longest river in the world?
+ANSWER: Nile River
+QUESTION: Who was the first President of the United States?
+ANSWER: George Washington
+QUESTION: What is the currency of Japan?
+ANSWER: Yen
+QUESTION: Which element has the atomic number 1?
+ANSWER: Hydrogen
+QUESTION: What is the largest mammal in the world?
+ANSWER: Blue Whale
+QUESTION: Which planet is known as the Red Planet?
+ANSWER: Mars
+QUESTION: How many hearts does an octopus have?
+ANSWER: Three
+QUESTION: What is the tallest mountain in the world?
+ANSWER: Mount Everest
+QUESTION: Who discovered penicillin?
+ANSWER: Alexander Fleming
+QUESTION: What is the primary language spoken in Brazil?
+ANSWER: Portuguese
+QUESTION: Which famous ship sank in 1912?
+ANSWER: Titanic
+QUESTION: What is the most widely spoken language in the world?
+ANSWER: Mandarin Chinese
+QUESTION: Who developed the theory of relativity?
+ANSWER: Albert Einstein
+QUESTION: What is the largest desert in the world?
+ANSWER: Sahara Desert
+QUESTION: What year did the Berlin Wall fall?
+ANSWER: 1989
+QUESTION: What is the national flower of Japan?
+ANSWER: Cherry Blossom
+QUESTION: Which planet is closest to the sun?
+ANSWER: Mercury
+QUESTION: Who wrote the novel "1984"?
+ANSWER: George Orwell
+QUESTION: What is the smallest bone in the human body?
+ANSWER: Stapes (or stirrup bone)
