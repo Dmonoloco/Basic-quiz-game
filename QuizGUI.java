@@ -2,6 +2,7 @@ package main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,53 +14,54 @@ public class QuizGUI extends JFrame implements ActionListener {
 	JButton buttonC;
 	JButton buttonD;
 	Question question;
+	ArrayList<Question> list;
 	
 	QuizGUI(Question q){
 			
 		question = q;
 		
-		Question[] list = new Question[4];
-		list[0] = Questions.getRandomQuestion();
-		list[1] = Questions.getRandomQuestion();
-		list[2] = q;
-		list[3] = Questions.getRandomQuestion();
-		
-		
-		int rand = (int)(Math.random()*4);	
-		
-		String rand0;
-		String rand1;
-		String rand2;
-		String rand3;
-		
+		list = new ArrayList<Question>();
+	
+		list.add(Questions.getRandomQuestion());
+		list.add(Questions.getRandomQuestion());
+		list.add(q);
+		list.add(Questions.getRandomQuestion());
+	
 		this.setTitle("Quiz Show");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(690,690);
 		int frameHeight = this.getHeight();
 		int frameWidth = this.getWidth();
 		
+		int rand = (int)(Math.random()*list.size());
 		
-		buttonA = new JButton("A. " + list[0].getAnswer());
+		buttonA = new JButton("A. " + list.remove(rand).getAnswer());
 		buttonA.setBackground(Color.red);
 		buttonA.setSize(200,frameWidth/2);
 		buttonA.addActionListener(this);
 		
-		buttonB = new JButton("B. " + list[2].getAnswer());
+		rand = (int)(Math.random()*list.size());
+		
+		buttonB = new JButton("B. " +  list.remove(rand).getAnswer());
 		buttonB.setBackground(Color.blue);
 		buttonB.setSize(200,frameWidth/2);
 		buttonB.addActionListener(this);
 		
-		buttonC = new JButton("C");
+		rand = (int)(Math.random()*list.size());
+		
+		buttonC = new JButton("C. " +  list.remove(rand).getAnswer());
 		buttonC.setBackground(Color.orange);
 		buttonC.setSize(200,frameWidth/2);
 		buttonC.addActionListener(this);
 		
-		buttonD = new JButton("D");
+		rand = (int)(Math.random()*list.size());
+		
+		buttonD = new JButton("D. " +  list.remove(rand).getAnswer());
 		buttonD.setBackground(Color.magenta);
 		buttonD.setSize(200,frameWidth/2);
 		buttonD.addActionListener(this);
 		
-		JLabel label = new JLabel("Testing label");
+		JLabel label = new JLabel(q.getQuestion());
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setVerticalAlignment(SwingConstants.BOTTOM);
 		
@@ -102,6 +104,10 @@ public class QuizGUI extends JFrame implements ActionListener {
 	
 	public void setQuestion(Question q) {
 		question = q;
+	}
+	
+	public void setList(ArrayList<Question> list) {
+		this.list = list;
 	}
 
 	@Override
