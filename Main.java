@@ -18,13 +18,15 @@ public class Main {
 		String Panswer;
 		Questions list = new Questions();
 		list.createQuestions();
-		Question rand = list.getRandomQuestion();
-		new QuizGUI();
+		Question rand;
+		QuizGUI UI;
 		
 		
 		while(System.currentTimeMillis() < end && score < 50)
 		{
-			rand = list.getRandomQuestion();
+			rand = Questions.getRandomQuestion();
+			UI = new QuizGUI(rand);
+			UI.setQuestion(rand);
 			System.out.println(rand.getQuestion());
 			Panswer = input.nextLine();
 			Panswer = Panswer.substring(0,1).toUpperCase() + Panswer.substring(1);

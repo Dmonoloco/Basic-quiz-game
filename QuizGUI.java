@@ -7,26 +7,44 @@ import javax.swing.*;
 import java.awt.*;
 
 public class QuizGUI extends JFrame implements ActionListener {
+	
 	JButton buttonA;
 	JButton buttonB;
 	JButton buttonC;
 	JButton buttonD;
+	Question question;
 	
-	QuizGUI(){
+	QuizGUI(Question q){
+			
+		question = q;
 		
-		this.setTitle("test GUI");
+		Question[] list = new Question[4];
+		list[0] = Questions.getRandomQuestion();
+		list[1] = Questions.getRandomQuestion();
+		list[2] = q;
+		list[3] = Questions.getRandomQuestion();
+		
+		
+		int rand = (int)(Math.random()*4);	
+		
+		String rand0;
+		String rand1;
+		String rand2;
+		String rand3;
+		
+		this.setTitle("Quiz Show");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(690,690);
 		int frameHeight = this.getHeight();
 		int frameWidth = this.getWidth();
 		
 		
-		buttonA = new JButton("A");
+		buttonA = new JButton("A. " + list[0].getAnswer());
 		buttonA.setBackground(Color.red);
 		buttonA.setSize(200,frameWidth/2);
 		buttonA.addActionListener(this);
 		
-		buttonB = new JButton("B");
+		buttonB = new JButton("B. " + list[2].getAnswer());
 		buttonB.setBackground(Color.blue);
 		buttonB.setSize(200,frameWidth/2);
 		buttonB.addActionListener(this);
@@ -80,6 +98,10 @@ public class QuizGUI extends JFrame implements ActionListener {
 
 		
 		
+	}
+	
+	public void setQuestion(Question q) {
+		question = q;
 	}
 
 	@Override

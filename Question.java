@@ -6,11 +6,18 @@ public class Question {
 	private String question;
 	private String answer;
 	
+	public Question() {
+		value = 0;
+		question = "question";
+		answer = "answer";
+	}
+	
 	public Question(int value, String question,String answer){
 		this.value = value;
 		this.question = question;
 		this.answer = answer;
 	}
+	
 	
 	public String getQuestion(){
 		return question;
