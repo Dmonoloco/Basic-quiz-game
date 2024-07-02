@@ -3,7 +3,9 @@ package main;
 import java.util.*;
 public class Main {
 	public static void main(String[] args) {
+		
 		Scanner input = new Scanner(System.in);
+		
 		
 		int score = 0;
 		System.out.println("Welcome to this basic quiz game!");
@@ -16,7 +18,9 @@ public class Main {
 		String Panswer;
 		Questions list = new Questions();
 		list.createQuestions();
-		Question rand;
+		Question rand = list.getRandomQuestion();
+		new QuizGUI();
+		
 		
 		while(System.currentTimeMillis() < end && score < 50)
 		{
