@@ -15,16 +15,20 @@ public class QuizGUI extends JFrame implements ActionListener {
 	JButton buttonD;
 	Question question;
 	ArrayList<Question> list;
+	String rand0;
+	String rand1;
+	String rand2;
+	String rand3;
 	
 	QuizGUI(Question q){
-			
+		
 		question = q;
 		
 		list = new ArrayList<Question>();
 	
 		list.add(Questions.getRandomQuestion());
 		list.add(Questions.getRandomQuestion());
-		list.add(q);
+		list.add(question);
 		list.add(Questions.getRandomQuestion());
 	
 		this.setTitle("Quiz Show");
@@ -35,33 +39,36 @@ public class QuizGUI extends JFrame implements ActionListener {
 		
 		int rand = (int)(Math.random()*list.size());
 		
-		buttonA = new JButton("A. " + list.remove(rand).getAnswer());
+		rand0 = list.remove(rand).getAnswer();
+		rand = (int)(Math.random()*list.size());
+		rand1 = list.remove(rand).getAnswer();
+		rand = (int)(Math.random()*list.size());
+		rand2 = list.remove(rand).getAnswer();
+		rand = (int)(Math.random()*list.size());
+		rand3 = list.remove(rand).getAnswer();
+	
+		buttonA = new JButton("A. " + rand0);
 		buttonA.setBackground(Color.red);
 		buttonA.setSize(200,frameWidth/2);
-		buttonA.addActionListener(this);
 		
-		rand = (int)(Math.random()*list.size());
 		
-		buttonB = new JButton("B. " +  list.remove(rand).getAnswer());
+		buttonB = new JButton("B. " +  rand1);
 		buttonB.setBackground(Color.blue);
 		buttonB.setSize(200,frameWidth/2);
-		buttonB.addActionListener(this);
 		
-		rand = (int)(Math.random()*list.size());
 		
-		buttonC = new JButton("C. " +  list.remove(rand).getAnswer());
+		
+		buttonC = new JButton("C. " +  rand2);
 		buttonC.setBackground(Color.orange);
 		buttonC.setSize(200,frameWidth/2);
-		buttonC.addActionListener(this);
 		
-		rand = (int)(Math.random()*list.size());
 		
-		buttonD = new JButton("D. " +  list.remove(rand).getAnswer());
+		
+		buttonD = new JButton("D. " +  rand3);
 		buttonD.setBackground(Color.magenta);
 		buttonD.setSize(200,frameWidth/2);
-		buttonD.addActionListener(this);
 		
-		JLabel label = new JLabel(q.getQuestion());
+		JLabel label = new JLabel(question.getQuestion());
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setVerticalAlignment(SwingConstants.BOTTOM);
 		
@@ -106,24 +113,53 @@ public class QuizGUI extends JFrame implements ActionListener {
 		question = q;
 	}
 	
-	public void setList(ArrayList<Question> list) {
-		this.list = list;
+	public void refreshList(Question que) {
+		if(list.isEmpty()) {
+			list.add(Questions.getRandomQuestion());
+			list.add(Questions.getRandomQuestion());
+			list.add(Questions.getRandomQuestion());
+			list.add(que);
+		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource() == buttonA) {
-			System.out.println("buttonA did this");
+			if(rand0.equals(question.getAnswer())) {
+				System.out.println("That is the right answer!");
+				Main.score++;
+				System.out.println(Main.score);
+			} else {
+				System.out.println("Sorry, that is the wrong answer");
+			}
 		}
 		if(e.getSource() == buttonB) {
-			System.out.println("buttonB did this");
+			if(rand1.equals(question.getAnswer())) {
+				System.out.println("That is the right answer!");
+				Main.score++;
+				System.out.println(Main.score);
+			} else {
+				System.out.println("Sorry, that is the wrong answer");
+			}
 		}
 		if(e.getSource() == buttonC) {
-			System.out.println("buttonC did this");
+			if(rand2.equals(question.getAnswer())) {
+				System.out.println("That is the right answer!");
+				Main.score++;
+				System.out.println(Main.score);
+			} else {
+				System.out.println("Sorry, that is the wrong answer");
+			}
 		}
 		if(e.getSource() == buttonD) {
-			System.out.println("buttonD did this");
+			if(rand3.equals(question.getAnswer())) {
+				System.out.println("That is the right answer!");
+				Main.score++;
+				System.out.println(Main.score);
+			} else {
+				System.out.println("Sorry, that is the wrong answer");
+			}
 		}
 		
 	}
