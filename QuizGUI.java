@@ -15,6 +15,7 @@ public class QuizGUI extends JFrame implements ActionListener {
 	JButton buttonD;
 	Question question;
 	ArrayList<Question> list;
+	JLabel label;
 	String rand0;
 	String rand1;
 	String rand2;
@@ -68,7 +69,7 @@ public class QuizGUI extends JFrame implements ActionListener {
 		buttonD.setBackground(Color.magenta);
 		buttonD.setSize(200,frameWidth/2);
 		
-		JLabel label = new JLabel(question.getQuestion());
+		label = new JLabel(question.getQuestion());
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setVerticalAlignment(SwingConstants.BOTTOM);
 		
@@ -121,6 +122,25 @@ public class QuizGUI extends JFrame implements ActionListener {
 			list.add(que);
 		}
 	}
+	
+	public void refreshFrame() {
+		
+		int rand = (int)(Math.random()*list.size());
+		
+		rand0 = list.remove(rand).getAnswer();
+		rand = (int)(Math.random()*list.size());
+		rand1 = list.remove(rand).getAnswer();
+		rand = (int)(Math.random()*list.size());
+		rand2 = list.remove(rand).getAnswer();
+		rand = (int)(Math.random()*list.size());
+		rand3 = list.remove(rand).getAnswer();
+		
+		label.setText(question.getQuestion());
+		buttonA.setText("A. " + rand0);
+		buttonB.setText("B. " + rand1);
+		buttonC.setText("C. " + rand2);
+		buttonD.setText("D. " + rand3);
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -132,7 +152,9 @@ public class QuizGUI extends JFrame implements ActionListener {
 				System.out.println(Main.score);
 			} else {
 				System.out.println("Sorry, that is the wrong answer");
+				System.out.println("The right answer was: " + question.getAnswer());
 			}
+			refreshFrame();
 		}
 		if(e.getSource() == buttonB) {
 			if(rand1.equals(question.getAnswer())) {
@@ -141,7 +163,10 @@ public class QuizGUI extends JFrame implements ActionListener {
 				System.out.println(Main.score);
 			} else {
 				System.out.println("Sorry, that is the wrong answer");
+				System.out.println("The right answer was: " + question.getAnswer());
+
 			}
+			refreshFrame();
 		}
 		if(e.getSource() == buttonC) {
 			if(rand2.equals(question.getAnswer())) {
@@ -150,7 +175,10 @@ public class QuizGUI extends JFrame implements ActionListener {
 				System.out.println(Main.score);
 			} else {
 				System.out.println("Sorry, that is the wrong answer");
+				System.out.println("The right answer was: " + question.getAnswer());
+
 			}
+			refreshFrame();
 		}
 		if(e.getSource() == buttonD) {
 			if(rand3.equals(question.getAnswer())) {
@@ -159,7 +187,10 @@ public class QuizGUI extends JFrame implements ActionListener {
 				System.out.println(Main.score);
 			} else {
 				System.out.println("Sorry, that is the wrong answer");
+				System.out.println("The right answer was: " + question.getAnswer());
+
 			}
+			refreshFrame();
 		}
 		
 	}

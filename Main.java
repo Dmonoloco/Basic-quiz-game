@@ -21,20 +21,27 @@ public class Main {
 			list.createQuestions();
 			Question rand = Questions.getRandomQuestion();
 			QuizGUI UI = new QuizGUI(rand);
+			String Panswer = "";
 			
 			
 //			while(System.currentTimeMillis() < end && score < 50)
 //			{
-				
 				UI.setQuestion(rand);
 				
 				System.out.println(rand.getQuestion());
+				
 				UI.buttonA.addActionListener(UI);
 				UI.buttonB.addActionListener(UI);
 				UI.buttonC.addActionListener(UI);
 				UI.buttonD.addActionListener(UI);
-				
 				rand = Questions.getRandomQuestion();
+//				
+				UI.refreshList(rand);
+				UI.setQuestion(rand);
+				Panswer = input.nextLine();
+//				
+				
+			
 //			}
 			
 			if(score >= 50)
@@ -45,6 +52,11 @@ public class Main {
 			input.close();
 			
 			
+			
+		}
+		
+		
+		public static void pause() {
 			
 		}
 	}
