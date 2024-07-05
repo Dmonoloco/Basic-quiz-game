@@ -3,6 +3,9 @@ import java.util.*;
 public class Main {
 		
 		public static int score = 0;
+		private static boolean running = true;
+		private static boolean paused = true;
+		private static final Object lock = new Object();
 		
 		public static void main(String[] args) {
 			
@@ -24,25 +27,33 @@ public class Main {
 			String Panswer = "";
 			
 			
-//			while(System.currentTimeMillis() < end && score < 50)
-//			{
-				UI.setQuestion(rand);
+			while(System.currentTimeMillis() < end && score < 50 && running)
+			{
+				synchronized(lock) {
+					while(paused) {
+						try {
+							lock.wait();
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+					
+					UI.setQuestion(rand);
+					
+					System.out.println(rand.getQuestion());
+					
+					UI.buttonA.addActionListener(UI);
+					UI.buttonB.addActionListener(UI);
+					UI.buttonC.addActionListener(UI);
+					UI.buttonD.addActionListener(UI);
+					rand = Questions.getRandomQuestion();
 				
-				System.out.println(rand.getQuestion());
-				
-				UI.buttonA.addActionListener(UI);
-				UI.buttonB.addActionListener(UI);
-				UI.buttonC.addActionListener(UI);
-				UI.buttonD.addActionListener(UI);
-				rand = Questions.getRandomQuestion();
-//				
-				UI.refreshList(rand);
-				UI.setQuestion(rand);
-				Panswer = input.nextLine();
-//				
-				
+					UI.refreshList(rand);
+					UI.setQuestion(rand);
+					Panswer = input.nextLine();	
+				}			
 			
-//			}
+			}
 			
 			if(score >= 50)
 				System.out.println("Congrats! you won with a score of: " + score);
@@ -55,9 +66,5 @@ public class Main {
 			
 		}
 		
-		
-		public static void pause() {
-			
-		}
 	}
 
