@@ -34,7 +34,7 @@ public class Questions {
 		return questions.get(val);
 	}
 	
-	public void createQuestions() {
+	public static void createQuestions() {
 		
 		String line1 = "";
 		String line2 = "";

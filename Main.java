@@ -21,35 +21,45 @@ public class Main {
 			
 			long start = System.currentTimeMillis();
 			long end = start + 60 * 1000;
-			Questions list = new Questions();
-			list.createQuestions();
-			Question rand = Questions.getRandomQuestion();
-			QuizGUI UI = new QuizGUI(rand);
-			UI.buttonA.addActionListener(UI);
-			UI.buttonB.addActionListener(UI);
-			UI.buttonC.addActionListener(UI);
-			UI.buttonD.addActionListener(UI);
+			Questions.createQuestions();
 			
 			
+			
+			Thread quizLoop = new Thread(() -> {
+				Question rand = Questions.getRandomQuestion();
+				QuizGUI UI = new QuizGUI(rand);
+				UI.buttonA.addActionListener(UI);
+				UI.buttonB.addActionListener(UI);
+				UI.buttonC.addActionListener(UI);
+				UI.buttonD.addActionListener(UI);
 				while(System.currentTimeMillis() < end && score < 50)
-				{		
-				
+				{	
+					synchronized(lock) {
 						while(paused) {
-							System.out.println("I am paused");
+							try {
+								System.out.println("I am paused");
+								lock.wait();
+							} catch(InterruptedException e){
+								 e.printStackTrace();
+							}
 						}
-						UI.setQuestion(rand);
 						
+//						UI.setQuestion(rand);
 						System.out.println(rand.getQuestion());
 						
-
 						rand = Questions.getRandomQuestion();
-					
+						
 						UI.refreshList(rand);
-						UI.setQuestion(rand);		
+						UI.setQuestion(rand);	
+						
+							
+					}
 				}
 							
 				
+			});
 			
+			quizLoop.start();
 			
 		
 			
