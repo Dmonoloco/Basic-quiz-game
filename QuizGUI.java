@@ -141,6 +141,14 @@ public class QuizGUI extends JFrame implements ActionListener {
 		buttonC.setText("C. " + rand2);
 		buttonD.setText("D. " + rand3);
 	}
+	
+	public void resumeLoop() {
+		Main.paused = false;
+	}
+	
+	public void pauseLoop() {
+		Main.paused = true;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -155,6 +163,11 @@ public class QuizGUI extends JFrame implements ActionListener {
 				System.out.println("The right answer was: " + question.getAnswer());
 			}
 			refreshFrame();
+			for(int i = 0; i < 1;i++) {
+				System.out.println("Testing: " + i);
+				resumeLoop();
+			}
+			pauseLoop();
 		}
 		if(e.getSource() == buttonB) {
 			if(rand1.equals(question.getAnswer())) {
