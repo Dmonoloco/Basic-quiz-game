@@ -2,11 +2,11 @@ package main;
 
 import java.util.*;
 
+import javax.swing.ButtonModel;
+
 public class Main {
 		
 		public static int score = 0;
-		public static boolean paused = true;
-		public static final Object lock = new Object();
 		
 		public static void main(String[] args) {
 			
@@ -23,43 +23,17 @@ public class Main {
 			long end = start + 60 * 1000;
 			Questions.createQuestions();
 			
+			Question rand = Questions.getRandomQuestion();
+			QuizGUI UI = new QuizGUI(rand);
 			
-			
-			Thread quizLoop = new Thread(() -> {
-				Question rand = Questions.getRandomQuestion();
-				QuizGUI UI = new QuizGUI(rand);
-				UI.buttonA.addActionListener(UI);
-				UI.buttonB.addActionListener(UI);
-				UI.buttonC.addActionListener(UI);
-				UI.buttonD.addActionListener(UI);
-				while(System.currentTimeMillis() < end && score < 50)
-				{	
-					synchronized(lock) {
-						while(paused) {
-							try {
-								System.out.println("I am paused");
-								lock.wait();
-							} catch(InterruptedException e){
-								 e.printStackTrace();
-							}
-						}
-						
-//						UI.setQuestion(rand);
-						System.out.println(rand.getQuestion());
-						
-						rand = Questions.getRandomQuestion();
-						
-						UI.refreshList(rand);
-						UI.setQuestion(rand);	
-						
-							
-					}
-				}
-							
+			while(score < 50  && System.currentTimeMillis() < end) {
+				System.out.println(rand.getQuestion());
+				rand = Questions.getRandomQuestion();
+				UI.setQuestion(rand);
 				
-			});
+			}
+				
 			
-			quizLoop.start();
 			
 		
 			

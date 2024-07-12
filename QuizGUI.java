@@ -1,27 +1,25 @@
 package main;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class QuizGUI extends JFrame implements ActionListener {
+public class QuizGUI extends JFrame {
 	
-	JButton buttonA;
-	JButton buttonB;
-	JButton buttonC;
-	JButton buttonD;
-	Question question;
-	ArrayList<Question> list;
-	JLabel label;
-	String rand0;
-	String rand1;
-	String rand2;
-	String rand3;
+	public JButton buttonA;
+	public JButton buttonB;
+	public JButton buttonC;
+	public JButton buttonD;
+	public Question question;
+	public ArrayList<Question> list;
+	public JLabel label;
+	public String rand0;
+	public String rand1;
+	public String rand2;
+	public String rand3;
 	
-	QuizGUI(Question q){
+	public QuizGUI(Question q){
 		
 		question = q;
 		
@@ -51,23 +49,76 @@ public class QuizGUI extends JFrame implements ActionListener {
 		buttonA = new JButton("A. " + rand0);
 		buttonA.setBackground(Color.red);
 		buttonA.setSize(200,frameWidth/2);
+		buttonA.addActionListener((e) -> {
+			if(rand0.equals(question.getAnswer())) {
+				System.out.println("That is the right answer!");
+				Main.score++;
+				System.out.println(Main.score);
+			} else {
+				System.out.println("Sorry, that is the wrong answer");
+				System.out.println("The right answer was: " + question.getAnswer());
+			}
+			Main.rand = Questions.getRandomQuestion();
+			refreshList(Main.rand);
+			refreshFrame();
+		});
+		
 		
 		
 		buttonB = new JButton("B. " +  rand1);
 		buttonB.setBackground(Color.blue);
 		buttonB.setSize(200,frameWidth/2);
+		buttonB.addActionListener((e) -> {
+			if(rand1.equals(question.getAnswer())) {
+				System.out.println("That is the right answer!");
+				Main.score++;
+				System.out.println(Main.score);
+			} else {
+				System.out.println("Sorry, that is the wrong answer");
+				System.out.println("The right answer was: " + question.getAnswer());
+			}
+//			Main.rand = Questions.getRandomQuestion();
+//			refreshList(Main.rand);
+//			refreshFrame();
+		});
 		
 		
 		
 		buttonC = new JButton("C. " +  rand2);
 		buttonC.setBackground(Color.orange);
 		buttonC.setSize(200,frameWidth/2);
+		buttonC.addActionListener((e) -> {
+			if(rand2.equals(question.getAnswer())) {
+				System.out.println("That is the right answer!");
+				Main.score++;
+				System.out.println(Main.score);
+			} else {
+				System.out.println("Sorry, that is the wrong answer");
+				System.out.println("The right answer was: " + question.getAnswer());
+			}
+//			Main.rand = Questions.getRandomQuestion();
+//			refreshList(Main.rand);
+//			refreshFrame();
+		});
 		
 		
 		
 		buttonD = new JButton("D. " +  rand3);
 		buttonD.setBackground(Color.magenta);
 		buttonD.setSize(200,frameWidth/2);
+		buttonD.addActionListener((e) -> {
+			if(rand3.equals(question.getAnswer())) {
+				System.out.println("That is the right answer!");
+				Main.score++;
+				System.out.println(Main.score);
+			} else {
+				System.out.println("Sorry, that is the wrong answer");
+				System.out.println("The right answer was: " + question.getAnswer());
+			}
+//			Main.rand = Questions.getRandomQuestion();
+//			refreshList(Main.rand);
+//			refreshFrame();
+		});
 		
 		label = new JLabel(question.getQuestion());
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -114,16 +165,18 @@ public class QuizGUI extends JFrame implements ActionListener {
 		question = q;
 	}
 	
-	public void refreshList(Question que) {
+	public String refreshList(Question que) {
 		if(list.isEmpty()) {
 			list.add(Questions.getRandomQuestion());
 			list.add(Questions.getRandomQuestion());
 			list.add(Questions.getRandomQuestion());
 			list.add(que);
 		}
+		
+		return "refreshList method passed";
 	}
 	
-	public void refreshFrame() {
+	public String refreshFrame() {
 		
 		int rand = (int)(Math.random()*list.size());
 		
@@ -140,87 +193,8 @@ public class QuizGUI extends JFrame implements ActionListener {
 		buttonB.setText("B. " + rand1);
 		buttonC.setText("C. " + rand2);
 		buttonD.setText("D. " + rand3);
-	}
-	
-	public void resumeLoop() {
-		Main.paused = false;
-	}
-	
-	public void pauseLoop() {
-		Main.paused = true;
-	}
-	
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		if(e.getSource() == buttonA) {
-			if(rand0.equals(question.getAnswer())) {
-				System.out.println("That is the right answer!");
-				Main.score++;
-				System.out.println(Main.score);
-			} else {
-				System.out.println("Sorry, that is the wrong answer");
-				System.out.println("The right answer was: " + question.getAnswer());
-			}
-			refreshFrame();
-			for(int i = 0; i < 1;i++) {
-				System.out.println("Testing: " + i);
-				resumeLoop();
-			}
-			pauseLoop();
-		}
-		if(e.getSource() == buttonB) {
-			if(rand1.equals(question.getAnswer())) {
-				System.out.println("That is the right answer!");
-				Main.score++;
-				System.out.println(Main.score);
-			} else {
-				System.out.println("Sorry, that is the wrong answer");
-				System.out.println("The right answer was: " + question.getAnswer());
-
-			}
-			refreshFrame();
-			for(int i = 0; i < 1;i++) {
-				System.out.println("Testing: " + i);
-				resumeLoop();
-			}
-			pauseLoop();
-		}
-		if(e.getSource() == buttonC) {
-			if(rand2.equals(question.getAnswer())) {
-				System.out.println("That is the right answer!");
-				Main.score++;
-				System.out.println(Main.score);
-			} else {
-				System.out.println("Sorry, that is the wrong answer");
-				System.out.println("The right answer was: " + question.getAnswer());
-
-			}
-			refreshFrame();
-			for(int i = 0; i < 1;i++) {
-				System.out.println("Testing: " + i);
-				resumeLoop();
-			}
-			pauseLoop();
-		}
-		if(e.getSource() == buttonD) {
-			if(rand3.equals(question.getAnswer())) {
-				System.out.println("That is the right answer!");
-				Main.score++;
-				System.out.println(Main.score);
-			} else {
-				System.out.println("Sorry, that is the wrong answer");
-				System.out.println("The right answer was: " + question.getAnswer());
-
-			}
-			refreshFrame();
-			for(int i = 0; i < 1;i++) {
-				System.out.println("Testing: " + i);
-				resumeLoop();
-			}
-			pauseLoop();
-		}
 		
+		return "refreshFrame method passed";
 	}
+	
 }
