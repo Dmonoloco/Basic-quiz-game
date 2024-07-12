@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.*;
 
+@SuppressWarnings("serial")
 public class QuizGUI extends JFrame {
 	
 	public JButton buttonA;
@@ -12,6 +13,7 @@ public class QuizGUI extends JFrame {
 	public JButton buttonC;
 	public JButton buttonD;
 	public Question question;
+	public Question randQuestion;
 	public ArrayList<Question> list;
 	public JLabel label;
 	public String rand0;
@@ -58,8 +60,9 @@ public class QuizGUI extends JFrame {
 				System.out.println("Sorry, that is the wrong answer");
 				System.out.println("The right answer was: " + question.getAnswer());
 			}
-			Main.rand = Questions.getRandomQuestion();
-			refreshList(Main.rand);
+			randQuestion = Questions.getRandomQuestion();
+			setQuestion(randQuestion);
+			refreshList(randQuestion);
 			refreshFrame();
 		});
 		
@@ -77,9 +80,10 @@ public class QuizGUI extends JFrame {
 				System.out.println("Sorry, that is the wrong answer");
 				System.out.println("The right answer was: " + question.getAnswer());
 			}
-//			Main.rand = Questions.getRandomQuestion();
-//			refreshList(Main.rand);
-//			refreshFrame();
+			randQuestion = Questions.getRandomQuestion();
+			setQuestion(randQuestion);
+			refreshList(randQuestion);
+			refreshFrame();
 		});
 		
 		
@@ -96,9 +100,10 @@ public class QuizGUI extends JFrame {
 				System.out.println("Sorry, that is the wrong answer");
 				System.out.println("The right answer was: " + question.getAnswer());
 			}
-//			Main.rand = Questions.getRandomQuestion();
-//			refreshList(Main.rand);
-//			refreshFrame();
+			randQuestion = Questions.getRandomQuestion();
+			setQuestion(randQuestion);
+			refreshList(randQuestion);
+			refreshFrame();
 		});
 		
 		
@@ -115,9 +120,10 @@ public class QuizGUI extends JFrame {
 				System.out.println("Sorry, that is the wrong answer");
 				System.out.println("The right answer was: " + question.getAnswer());
 			}
-//			Main.rand = Questions.getRandomQuestion();
-//			refreshList(Main.rand);
-//			refreshFrame();
+			randQuestion = Questions.getRandomQuestion();
+			setQuestion(randQuestion);
+			refreshList(randQuestion);
+			refreshFrame();
 		});
 		
 		label = new JLabel(question.getQuestion());

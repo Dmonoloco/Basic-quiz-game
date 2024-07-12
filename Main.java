@@ -2,8 +2,6 @@ package main;
 
 import java.util.*;
 
-import javax.swing.ButtonModel;
-
 public class Main {
 		
 		public static int score = 0;
@@ -24,13 +22,11 @@ public class Main {
 			Questions.createQuestions();
 			
 			Question rand = Questions.getRandomQuestion();
+			@SuppressWarnings("unused")
 			QuizGUI UI = new QuizGUI(rand);
 			
 			while(score < 50  && System.currentTimeMillis() < end) {
-				System.out.println(rand.getQuestion());
-				rand = Questions.getRandomQuestion();
-				UI.setQuestion(rand);
-				
+							
 			}
 				
 			
