@@ -50,7 +50,6 @@ public class QuizGUI extends JFrame {
 	
 		buttonA = new JButton("A. " + rand0);
 		buttonA.setBackground(Color.red);
-		buttonA.setSize(200,frameWidth/2);
 		buttonA.addActionListener((e) -> {
 			if(rand0.equals(question.getAnswer())) {
 				System.out.println("That is the right answer!");
@@ -70,7 +69,6 @@ public class QuizGUI extends JFrame {
 		
 		buttonB = new JButton("B. " +  rand1);
 		buttonB.setBackground(Color.blue);
-		buttonB.setSize(200,frameWidth/2);
 		buttonB.addActionListener((e) -> {
 			if(rand1.equals(question.getAnswer())) {
 				System.out.println("That is the right answer!");
@@ -90,7 +88,6 @@ public class QuizGUI extends JFrame {
 		
 		buttonC = new JButton("C. " +  rand2);
 		buttonC.setBackground(Color.orange);
-		buttonC.setSize(200,frameWidth/2);
 		buttonC.addActionListener((e) -> {
 			if(rand2.equals(question.getAnswer())) {
 				System.out.println("That is the right answer!");
@@ -110,7 +107,6 @@ public class QuizGUI extends JFrame {
 		
 		buttonD = new JButton("D. " +  rand3);
 		buttonD.setBackground(Color.magenta);
-		buttonD.setSize(200,frameWidth/2);
 		buttonD.addActionListener((e) -> {
 			if(rand3.equals(question.getAnswer())) {
 				System.out.println("That is the right answer!");
@@ -135,31 +131,25 @@ public class QuizGUI extends JFrame {
 		greenPanel.setBackground(Color.green);
 		greenPanel.add(label);
 		
+		JPanel mainPanel = new JPanel();
+		mainPanel.setSize(455,690);
+		mainPanel.setLayout(new GridLayout(2,2));
+		mainPanel.add(buttonA);
+		mainPanel.add(buttonB);
+		mainPanel.add(buttonC);
+		mainPanel.add(buttonD);
+		
+		
 		
 		int x = (frameWidth- greenPanel.getWidth()) / 2;
 		int y = (frameHeight - greenPanel.getHeight()) / 2;
 		
 		greenPanel.setBounds(0,y,greenPanel.getHeight(),greenPanel.getWidth());
+		mainPanel.setBounds(0,200, mainPanel.getHeight(), mainPanel.getWidth());
+	
 		
-		x = (frameWidth- buttonA.getHeight()) / 2;
-		y = (frameHeight - buttonA.getHeight() + 56) / 2;
-		
-		buttonA.setBounds(0,y,buttonA.getHeight(),buttonA.getWidth());
-		
-		x = buttonB.getWidth() + 143;
-		y = (frameHeight - buttonB.getHeight() + 56) / 2;
-				
-		buttonB.setBounds(x,y,buttonB.getHeight(),buttonB.getWidth());
-		
-		buttonC.setBounds(0,397,buttonC.getHeight(),buttonC.getWidth());
-		
-		buttonD.setBounds(343,400,buttonD.getHeight(),buttonD.getWidth());
-		
-		this.add(buttonA);
-		this.add(buttonB);
-		this.add(buttonC);
-		this.add(buttonD);
 		this.add(greenPanel);
+		this.add(mainPanel);
 		this.setLayout(null);
 		this.setVisible(true);
 
